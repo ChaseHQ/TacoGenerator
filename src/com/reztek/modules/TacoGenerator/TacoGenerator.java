@@ -17,7 +17,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class TacoGenerator extends CommandModule {
 
 	public static final String PLUGIN_ID               = "TACOGENERATOR";
-	public static final String PLUGIN_VER              = "1.0";
+	public static final String PLUGIN_VER              = "1.1";
 	
 	private static final String GOOGLE_API_KEY         = ConfigReader.GetConfigReader().getConfigString("GOOGLE_API_KEY");
 	private static final String GOOGLE_API_CX          = ConfigReader.GetConfigReader().getConfigString("GOOGLE_API_CX");
