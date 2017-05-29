@@ -17,13 +17,20 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class TacoGenerator extends CommandModule {
 
 	public static final String PLUGIN_ID               = "TACOGENERATOR";
-	public static final String PLUGIN_VER              = "1.1";
+	public static final String PLUGIN_VER              = "1.2";
 	
-	private static final String GOOGLE_API_KEY         = ConfigReader.GetConfigReader().getConfigString("GOOGLE_API_KEY");
-	private static final String GOOGLE_API_CX          = ConfigReader.GetConfigReader().getConfigString("GOOGLE_API_CX");
+	private static String GOOGLE_API_KEY;
+	private static String GOOGLE_API_CX;
 	
 	private static final String GOOGLE_CUSTOM_SEARCH   = "https://www.googleapis.com/customsearch/v1?key=" + GOOGLE_API_KEY +
 			"&cx=" + GOOGLE_API_CX + "&filter=1&searchType=image&q=";
+	
+	public static void SetupPlugin() {
+		GOOGLE_API_KEY = ConfigReader.GetConfigReader().getConfigString("GOOGLE_API_KEY");
+		if (GOOGLE_API_KEY == null) ConfigReader.GetConfigReader().createNewConfigValue("GOOGLE_API_KEY", "Insert Google API Key Here");
+		GOOGLE_API_CX = ConfigReader.GetConfigReader().getConfigString("GOOGLE_API_CX");
+		if (GOOGLE_API_CX == null) ConfigReader.GetConfigReader().createNewConfigValue("GOOGLE_API_CX", "Insert search engine CX Here");
+	}
 	
 	public TacoGenerator() {
 		super(PLUGIN_ID);
